@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<typeAlias alias="b" type="model.Board73Bean" />
+	<!-- 자바 코드로 표현하면 model.Board73Bean b=
+	new model.Board73Bean(); 새로운 객체 b를 생성함. -->
+
+    <!-- 저장  -->
+    <insert id="b_in" parameterClass="b">
+     <!-- parameterClass속성은 전달인자로 넘어온 자료형 타입을
+     지정한다. -->
+       insert into board73 (board_no,board_name,board_title,
+       board_pwd,board_cont,board_date)
+       values(board73_no_seq.nextval,#board_name#,#board_title#,
+       #board_pwd#,#board_cont#,sysdate)
+    </insert>
+    <!-- #board_name#을 자바코드로 표현하면 b.getBoard_name()
+    과 같다. -->
+    
+    <!-- 총 레코드 개수 -->
+    <select id="bcount" resultClass="int">
+     <!-- resultClass속성은 반환 자료형 타입 -->
+      select count(board_no) from board73
+    </select>
+    
+    <!-- 전체목록 -->
+    <select id="blist" resultClass="b">
+      select * from board73 order by board_no desc
+    </select>
+    
+    <!-- 조회수 증가 -->
+    <update id="bhit" parameterClass="int">
+      update board73 set board_hit=board_hit+1
+      where board_no=#num#
+    </update>
+    
+    <!-- 내용보기 -->
+    <select id="bcont" resultClass="b" parameterClass="int">
+      select * from board73 where board_no=#num#
+    </select>
+</sqlMap>
+
+
+
+
+
+
+

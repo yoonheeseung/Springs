@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<!-- HandlerMapping -->
+  <!-- index.do가 파일과 control파일을 매핑시킴-->
+  <!-- 스프링 Controller -->
+  <bean id="infoWriteController" name="/info_write.do"   class="controller.InfoWriteController">
+  <!-- 웹주소 창에 http://127.0.0.1:포트번호/sp01/info_write.do
+       라고 입력하면 controller패키지의 InfoWriteController 클래스가
+      실행된다. 이 부분을 자바 코드로 표현하면
+      controller.InfoWriteController infoController=
+        new controller.InfoWriteController();
+      새로운 객체명 infoWriteController를 만든 것과 같다. -->  
+</bean>
+
+<bean id="infoWriteOkController" name="/info_write_ok.do" class="controller.InfoOKController">
+ <property name="iService">
+ <ref bean="iService" />
+ </property><!-- 스프링 setter DI 의존관계를 설정함. -->
+ </bean>
+ 
+ <bean id="ilistController" name="/info_list.do" class="controller.InfoListController">
+ <property name="iService">
+ <ref bean="iService" />
+ </property>
+ </bean>
+ 
+ <!-- 스프링과 ibatis를 연결 -->
+ <bean id="iService" class="dao.InfoDAOImpl" />
+ <!-- InfoDAO는 인터페이스,InfoDAOImpl클래스는 InfoDAO인터페이스를
+     상속받은 클래스, 이 부분은 자바코드로 표현하면
+     dao.InfoDAOImpl iService=new dao.InfoDAOImple(); 
+     새로운 객채명 iService를 만든것과 같다. -->
+ 
+
+</beans>

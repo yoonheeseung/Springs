@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<typeAlias alias="ib" type="model.InfoBean" />
+	<!-- 저장 -->
+	<insert id="ib_in" parameterClass="ib"><!-- parameterCalss속성은 전달인자 자료형 타입 -->
+	 insert into info23(name,addr,regdate) values(#name#,#addr#,sysdate)
+	</insert>
+	
+	<select id="ilist" resultClass="ib" ><!-- resultClass 속성은 반환 자료형 타입 -->
+	 select * from info23
+	</select>
+</sqlMap>
+
+
+
+
+
+
+
