@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>sp02</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 스프링 개발환경 설정 -->
+  <filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- get or post 방식으로 넘어온 한글자료를 서버에서 받을때
+	안깨지게 하는 스프링 설정부분 -->
+	
+	<!-- 스프링에서 디비 관련 xml 파일로드 -->
+	<listener>
+	<listener-class>
+	org.springframework.web.context.ContextLoaderListener
+	</listener-class>
+	<!-- 컨텍스트로더 이 부분을 설정하면 WEB-INF폴더의 
+	     applicationContext.xml 파일이 로드 되어서 실행
+	 -->
+	</listener>
+
+<!-- 스프링 서블릿 환경 설정 -->
+	<servlet>
+    <servlet-name>sp-02</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>sp-02</servlet-name>
+    <url-pattern>*.do</url-pattern>
+    <!-- 웹주소창에 http://127.0.0.1:포트번호/sp01/*.do라고 입력
+    하면 디스패처 서블릿 클래스에 의해서 서블릿 네임에서 지정한
+    sp-01-servlet.xml파일이 로드되어 져서 실행된다. 로드될때
+    서블릿 네임에 -servlet.xml파일이 붙어서 실행된다.
+    로드온스타트업 1의 뜻은 첫번째 실행된다는 뜻.
+     -->
+  </servlet-mapping>    
+	
+	
+</web-app>

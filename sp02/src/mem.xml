@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<typeAlias alias="m" type="model.MemBean" />
+	
+	<!-- 저장 -->
+	<insert id="mem_in" parameterClass="m">
+	insert into mem33(mem_id,mem_pwd,mem_name,mem_addr,mem_phone01,mem_phone02,mem_phone03,mem_regdate,mem_status) 
+	values(#mem_id#,#mem_pwd#,#mem_name#,#mem_addr#,#mem_phone01#,#mem_phone02#,#mem_phone03#,sysdate,1)
+	</insert>
+	
+	<select id="dbid_check" parameterClass="String" resultClass="m">
+	 select * from mem33 where mem_id=#mem_id#
+	</select>
+	
+	<!-- 로그인 인증 -->
+	<select id="logincheck" parameterClass="String" resultClass="m">
+	 select * from mem33 where mem_id=#login_id# and mem_status=1
+	</select>
+</sqlMap>
+
+
+
+
+
+
+
