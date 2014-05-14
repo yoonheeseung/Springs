@@ -32,5 +32,11 @@ public class MemDAOImpl implements MemDAO {
 	public MemBean loginCheck(String login_id) throws SQLException {
 	    return (MemBean)SqlMapLocator.getMapper().queryForObject("logincheck", login_id);
 	}//로그인 인증
+
+	@Override
+	public MemBean findPhone(String id) throws SQLException {
+	  return (MemBean)SqlMapLocator.getMapper().queryForObject("phonecheck",id);	
+	
+	}
 	
 }

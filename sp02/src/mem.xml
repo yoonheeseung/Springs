@@ -19,6 +19,11 @@
 	<select id="logincheck" parameterClass="String" resultClass="m">
 	 select * from mem33 where mem_id=#login_id# and mem_status=1
 	</select>
+	
+	<!-- 전화번호 -->
+	<select id="phonecheck" parameterClass="String" resultClass="String">
+	 select * from mem33 where mem_id=#id#
+	</select>
 </sqlMap>
 
 
