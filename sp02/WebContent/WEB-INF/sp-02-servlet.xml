@@ -16,57 +16,74 @@
 				<prop key="/index.do">indexAction</prop>
 				<prop key="/logout.do">logoutAction</prop>
 				<prop key="/mem_edit.do">memEditAction</prop>
+				<prop key="/mem_edit_ok.do">memEditOKAction</prop>
+				<prop key="/mem_del.do">memDELAction</prop>
+				<prop key="/mem_del_ok.do">memDELOKAction</prop>
+
 			</props>
 		</property>
 	</bean>
 
 	<!-- Controller -->
-
-	<bean id="memEditAction" class="action.MemEditAction" >
-	<property name="memService">
-		<ref bean="memService" />
-	</property>
-     </bean>
-     
-	<bean id="logoutAction" class="action.MemOutAction" />
-
-	<bean id="indexAction" class="action.IndexAction" />
-
-	<bean id="memLoginOKAction" class="action.MemLoginOKAction">
+	<bean id="memDELOKAction" class="action.MemDElOKAction">
 		<property name="memService">
 			<ref bean="memService" />
 		</property>
-		<!-- 스프링 setter DI 의존관계를 설정 -->
-	</bean>
+    </bean>
+    
+		<bean id="memDELAction" class="action.MemDELAction" />
 
-	<bean id="memJoinOKAction" class="action.MemJoinOKAction">
-		<property name="memService">
-			<ref bean="memService" />
-		</property>
-		<!-- 스프링 setter DI 의존관계를 설정 -->
-	</bean>
+		<bean id="memEditOKAction" class="action.MemEditOKAction">
+			<property name="memService">
+				<ref bean="memService" />
+			</property>
+		</bean>
+
+		<bean id="memEditAction" class="action.MemEditAction">
+			<property name="memService">
+				<ref bean="memService" />
+			</property>
+		</bean>
+
+		<bean id="logoutAction" class="action.MemOutAction" />
+
+		<bean id="indexAction" class="action.IndexAction" />
+
+		<bean id="memLoginOKAction" class="action.MemLoginOKAction">
+			<property name="memService">
+				<ref bean="memService" />
+			</property>
+			<!-- 스프링 setter DI 의존관계를 설정 -->
+		</bean>
+
+		<bean id="memJoinOKAction" class="action.MemJoinOKAction">
+			<property name="memService">
+				<ref bean="memService" />
+			</property>
+			<!-- 스프링 setter DI 의존관계를 설정 -->
+		</bean>
 
 
-	<bean id="memLoginAction" class="action.MemLoginAction" />
-	<bean id="memJoinAction" class="action.MemJoinAction" />
+		<bean id="memLoginAction" class="action.MemLoginAction" />
+		<bean id="memJoinAction" class="action.MemJoinAction" />
 
-	<!-- 자바 코드로 표현하면 action.MemLoginAction memLoginAction=new action.MemLoginAction(); 
-		new에 의해서 새로운 객체명 memLoginAction이 만들어 진것과 같다. -->
+		<!-- 자바 코드로 표현하면 action.MemLoginAction memLoginAction=new action.MemLoginAction(); 
+			new에 의해서 새로운 객체명 memLoginAction이 만들어 진것과 같다. -->
 
-	<!-- ViewResolver -->
-	<bean id="internalResourceViewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass">
-			<value>org.springframework.web.servlet.view.JstlView</value>
-		</property>
-		<property name="prefix">
-			<value>jsp/</value>
-			<!-- 스프링 뷰페이지 폴더를 jsp로 설정 -->
-		</property>
-		<property name="suffix">
-			<value>.jsp</value>
-			<!-- 뷰페이지 확장자를 *.jsp로 설정 -->
-		</property>
-	</bean>
+		<!-- ViewResolver -->
+		<bean id="internalResourceViewResolver"
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="viewClass">
+				<value>org.springframework.web.servlet.view.JstlView</value>
+			</property>
+			<property name="prefix">
+				<value>jsp/</value>
+				<!-- 스프링 뷰페이지 폴더를 jsp로 설정 -->
+			</property>
+			<property name="suffix">
+				<value>.jsp</value>
+				<!-- 뷰페이지 확장자를 *.jsp로 설정 -->
+			</property>
+		</bean>
 </beans>
 

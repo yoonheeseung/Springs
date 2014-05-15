@@ -45,11 +45,12 @@ public class MemEditAction {
 			String[] phone={"010","011","016","018","019"};
 			
 			MemBean dm = this.memService.findId(id);
-			
+			String ph01=this.memService.findPhone(id);
 			// 아이디에 해당하는 회원정보를 디비로 부터 가져온다.
 			em.addAttribute("dm", dm);//회원정보
-			em.addAttribute("ph",dm.getMem_phone01());//해당회원 전화번호 앞자리
+//			em.addAttribute("ph",dm.getMem_phone01());//해당회원 전화번호 앞자리
             em.addAttribute("p",phone);//전화번호 앞자리 리스트
+            em.addAttribute("ph",ph01);
             
 			return "member/mem_edit";
 			// jsp/member/mem_edit.sjp 뷰 페이지가 실행

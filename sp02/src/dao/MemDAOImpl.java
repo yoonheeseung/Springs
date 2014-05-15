@@ -34,9 +34,30 @@ public class MemDAOImpl implements MemDAO {
 	}//로그인 인증
 
 	@Override
-	public MemBean findPhone(String id) throws SQLException {
-	  return (MemBean)SqlMapLocator.getMapper().queryForObject("phonecheck",id);	
+	public String findPhone(String id) throws SQLException {
+	  return (String)SqlMapLocator.getMapper().queryForObject("phonecheck",id);	
 	
-	}
+	}//전화번호
+
+	@Override
+	public int editM(MemBean em) throws SQLException {
+		int re=0;
+		re=SqlMapLocator.getMapper().update("medit", em);
+		//medit는 udpate 아이디 이름
+		return re;
+		/* 
+		 * 월말평가 문제
+		 * 1. ibatis에서 update(),delete()메서드는 반환값이 쿼리문
+		 *    실행된 레코드의 행(rows)의 갯수를 반환, 한개의 레코드 값이
+		 *    수정 성공시 리턴값은 정수형 숫자 1
+		 */
+	}//정보수정
+
+	@Override
+	public void deleteM(MemBean dm) throws SQLException {
+	SqlMapLocator.getMapper().update("mdel",dm);
+	//mdel은 udpate 아이디 이름.
+		
+	}//회원탈퇴
 	
 }

@@ -53,12 +53,29 @@
 			<tr>
 				<th>폰번호</th>
 				<td><select name="mem_phone01">
-						<c:forEach var="p" items="${p}">
+						<%-- <c:forEach var="p" items="${p}">
 						<c:if test="${p==ph}" >
 						   <option value="${ph}" selected="${ph}">${p}</option>
 						</c:if>
 						<option value="${p}">${p}</option>
-						</c:forEach>
+						</c:forEach> --%>
+						
+				<%-- <c:forEach var="p" items="${p}">
+				<option value="${p}" <c:if test="${dm.mem_phone01==p}">
+				                           ${'selected'}
+				                     </c:if>
+				 >${p}</option>
+				</c:forEach> --%>
+				
+				<c:forEach var="p" items="${p}">
+				<option value="${p}" 
+				<c:if test="${ph==p}">
+				            ${'selected'}
+				</c:if>
+				 >${p}</option>
+				</c:forEach>
+						
+						
 						
 			 <!--  과제물
 			   1. MemEditAction.java에 폰번호 문자열 배열객체 phone을 만드세요.

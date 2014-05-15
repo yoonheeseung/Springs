@@ -12,5 +12,10 @@ MemBean findId(String mem_id) throws SQLException;//중복 체크,public abstrac
 
 MemBean loginCheck(String login_id) throws SQLException;//로그인 인증
 
-MemBean findPhone(String id) throws SQLException;//전화번호 
+String findPhone(String id) throws SQLException;//전화번호 
+
+int editM(MemBean em) throws SQLException;//정보수정
+
+void deleteM(MemBean dm) throws SQLException;//삭제 메서드
+
 }
